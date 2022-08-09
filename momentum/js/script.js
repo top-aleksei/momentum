@@ -80,7 +80,7 @@ setBg();
 
 //QUOUTES
 getQuotes();
-QUOTE_BTN.addEventListener("click", () => getQuotes());
+QUOTE_BTN.addEventListener("click", getQuotes);
 
 //SETTINGS
 
