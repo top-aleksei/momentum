@@ -3,7 +3,7 @@ import { defaultLanguage } from "./settings.js";
 let currenQuote;
 
 export async function getQuotes() {
-  const quotes = "./../json/data.json";
+  const quotes = "./json/data.json";
   const res = await fetch(quotes);
   const data = await res.json();
 
