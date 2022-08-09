@@ -1,5 +1,3 @@
-// const playBtn = document.querySelector('.play-btn');
-// const pauseBtn = document.querySelector('.pause-btn');
 import {
   PLAY_BTN,
   PLAY_PREV_BTN,
@@ -14,7 +12,7 @@ import {
 } from "./CONSTANTS.js";
 import { playList } from "./playList.js";
 
-const audio = new Audio();
+export const audio = new Audio();
 let isPlay = false;
 let isMuted = false;
 let playNum = 0;
@@ -23,7 +21,7 @@ let lastVolume;
 
 playerTitle.textContent = playList[0].title;
 
-function playAudio() {
+export function playAudio() {
   if (!isPlay) {
     audio.src = playList[playNum].src;
     audio.currentTime = timer;
@@ -43,7 +41,7 @@ function playAudio() {
   }
 }
 
-function createPlayList() {
+export function createPlayList() {
   for (let v of playList) {
     const li = document.createElement("li");
     li.classList.add("play-item");
@@ -52,7 +50,7 @@ function createPlayList() {
   }
 }
 
-function playNext() {
+export function playNext() {
   timer = 0;
   document
     .querySelectorAll(".play-item")
@@ -66,7 +64,7 @@ function playNext() {
   playAudio();
 }
 
-function playPrev() {
+export function playPrev() {
   timer = 0;
   document
     .querySelectorAll(".play-item")
@@ -85,7 +83,7 @@ function secondsToMinutes(time) {
   return `${m}:${s.toString().padStart(2, "0")}`;
 }
 
-function updateProgress(e) {
+export function updateProgress(e) {
   const length = Math.trunc(audio.duration);
   const current = Math.trunc(audio.currentTime);
   const progressPercent = (current / length) * 100;
@@ -97,7 +95,7 @@ function updateProgress(e) {
   }
 }
 
-function setProgress(e) {
+export function setProgress(e) {
   const width = this.clientWidth;
   const clickX = e.offsetX;
   const duration = audio.duration;
@@ -105,11 +103,11 @@ function setProgress(e) {
   audio.currentTime = (clickX / width) * duration;
 }
 
-function setVolume() {
+export function setVolume() {
   audio.volume = volumeInput.value;
 }
 
-function getMuted() {
+export function getMuted() {
   if (!isMuted) {
     lastVolume = volumeInput.value;
     volumeInput.value = 0;
@@ -124,12 +122,12 @@ function getMuted() {
   }
 }
 
-MUTE_BTN.addEventListener("click", getMuted);
-volumeInput.addEventListener("input", setVolume);
-progressContainer.addEventListener("click", setProgress);
-audio.addEventListener("timeupdate", updateProgress);
-document.addEventListener("DOMContentLoaded", createPlayList);
-PLAY_BTN.addEventListener("click", playAudio);
-PLAY_NEXT_BTN.addEventListener("click", playNext);
-PLAY_PREV_BTN.addEventListener("click", playPrev);
-audio.addEventListener("ended", playNext);
+// MUTE_BTN.addEventListener("click", getMuted);
+// volumeInput.addEventListener("input", setVolume);
+// progressContainer.addEventListener("click", setProgress);
+// audio.addEventListener("timeupdate", updateProgress);
+// document.addEventListener("DOMContentLoaded", createPlayList);
+// PLAY_BTN.addEventListener("click", playAudio);
+// PLAY_NEXT_BTN.addEventListener("click", playNext);
+// PLAY_PREV_BTN.addEventListener("click", playPrev);
+// audio.addEventListener("ended", playNext);

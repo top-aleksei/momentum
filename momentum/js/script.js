@@ -8,8 +8,14 @@ import {
   RU_BTN,
   SETTINGS_BTN,
   body,
+  MUTE_BTN,
+  volumeInput,
+  progressContainer,
+  PLAY_BTN,
+  PLAY_NEXT_BTN,
+  PLAY_PREV_BTN,
 } from "./CONSTANTS.js";
-import "./localStorage.js";
+import { setLocalStorage, getLocalStorage } from "./localStorage.js";
 import { getRandomNum, setBg, getSlideNext, getSlidePrev } from "./bg.js";
 import {
   getCityLocalStorage,
@@ -17,7 +23,17 @@ import {
   setCityLocalStorage,
 } from "./weather.js";
 import { getQuotes } from "./quotes.js";
-import "./audio.js";
+import {
+  getMuted,
+  setVolume,
+  setProgress,
+  audio,
+  updateProgress,
+  createPlayList,
+  playAudio,
+  playNext,
+  playPrev,
+} from "./audio.js";
 import {
   showSettings,
   onEnglish,
@@ -29,10 +45,23 @@ import {
 } from "./settings.js";
 import "./settingsMenu.js";
 import "./showHIDEelements.js";
+getDefaultSettings();
+//LOCAL STORAGE
+window.addEventListener("beforeunload", setLocalStorage);
+window.addEventListener("load", getLocalStorage);
 
 showTime();
-// getSplash();
 
+//audio//
+MUTE_BTN.addEventListener("click", getMuted);
+volumeInput.addEventListener("input", setVolume);
+progressContainer.addEventListener("click", setProgress);
+audio.addEventListener("timeupdate", updateProgress);
+document.addEventListener("DOMContentLoaded", createPlayList);
+PLAY_BTN.addEventListener("click", playAudio);
+PLAY_NEXT_BTN.addEventListener("click", playNext);
+PLAY_PREV_BTN.addEventListener("click", playPrev);
+audio.addEventListener("ended", playNext);
 // Weather//
 getCityLocalStorage();
 window.addEventListener("beforeunload", setCityLocalStorage);

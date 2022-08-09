@@ -14,14 +14,10 @@ export const unsplashTag = document.querySelector(".unsplashTag");
 export const flickrTag = document.querySelector(".flickrTag");
 const bgSettingsItems = document.querySelectorAll(".bg-item-content");
 
-// for (let v of bgSettingsItems) {
-//   console.log(v.textContent);
-// }
-
-//
-
-export let defaultLanguage = localStorage.lang || "en";
-export let bgSource = localStorage.bgSource || "git";
+export let defaultLanguage;
+export let bgSource;
+// export let defaultLanguage = localStorage.lang || "en";
+// export let bgSource = localStorage.bgSource || "git";
 unsplashTag.placeholder = "#tag"; //placeholder
 flickrTag.placeholder = "#tag"; //placeholder
 
@@ -78,8 +74,19 @@ export function setDefaultSettings() {
   localStorage.setItem("flickrTag", flickrTag.value);
 }
 export function getDefaultSettings() {
-  defaultLanguage = localStorage.getItem("lang");
-  bgSource = localStorage.getItem("bgSource");
+  if (localStorage.getItem("lang") && localStorage.getItem("lang") != "null") {
+    defaultLanguage = localStorage.getItem("lang");
+  } else {
+    defaultLanguage = "en";
+  }
+  if (
+    localStorage.getItem("bgSource") &&
+    localStorage.getItem("bgSource") != "null"
+  ) {
+    bgSource = localStorage.getItem("bgSource");
+  } else {
+    bgSource = "git";
+  }
   unsplashTag.value = localStorage.getItem("unsplashTag");
   flickrTag.value = localStorage.getItem("flickrTag");
   showRightSource();
