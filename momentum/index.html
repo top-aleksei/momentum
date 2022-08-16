@@ -27,7 +27,7 @@
             </div>
           </div>
           <div class="volume-section">
-            <button class="muteButton player-icon"></button>
+            <button class="muteButton player-icon hide-muteButton"></button>
             <input type="range" id="soundVolume" min="0" max="1" step="0.1" />
           </div>
         </div>
@@ -59,7 +59,7 @@
     </main>
     <footer class="footer">
       <div class="settings-container">
-        <div class="settings-app hide-element">
+        <div class="settings-app hide-with-opacity">
           <nav class="settings-nav">
             <div class="nav-list">
               <div class="nav-item nav-title">Settings</div>
@@ -71,6 +71,26 @@
                 <div class="nav-item">Show/hide elements</div>
                 <div class="arrow arrow-hide"></div>
               </div>
+            </div>
+            <div class="logos">
+              <ul class="logo-list">
+                <li class="logo-item">
+                  <a href="https://github.com/top-aleksei" target="_blank"
+                    ><img
+                      class="logo-img1"
+                      src="./assets/svg/gh-logo.png"
+                      alt="github"
+                  /></a>
+                </li>
+                <li class="logo-item">
+                  <a href="https://rs.school/index.html" target="_blank"
+                    ><img
+                      class="logo-img2"
+                      src="./assets/svg/rs_school_js.svg"
+                      alt="rs school"
+                  /></a>
+                </li>
+              </ul>
             </div>
             <div class="switchLanguage">
               <span class="enl active-language">EN</span>
@@ -224,7 +244,21 @@
         <div class="quote"></div>
         <div class="author"></div>
       </div>
-      <span class="">Todo</span>
+      <div class="appf-container">
+        <div class="app-wrapper">
+          <div class="app nipple hide-with-opacity">
+            <div class="todo-list-wrapper">
+              <ol class="todo-list">
+                <li class="empty">No todos yet</li>
+              </ol>
+            </div>
+            <footer class="footer-input">
+              <input type="text" class="todo-input" placeholder="New todo" />
+            </footer>
+          </div>
+          <span class="app-dash">Todo</span>
+        </div>
+      </div>
     </footer>
     <script src="js/script.js" type="module"></script>
   </body>

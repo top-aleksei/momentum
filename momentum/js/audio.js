@@ -1,11 +1,8 @@
 import {
   PLAY_BTN,
-  PLAY_PREV_BTN,
-  PLAY_NEXT_BTN,
   htmlPlayList,
   playerTitle,
   progress,
-  progressContainer,
   playerDuration,
   volumeInput,
   MUTE_BTN,
@@ -31,23 +28,26 @@ export function playAudio() {
     isPlay = true;
     document
       .querySelectorAll(".play-item")
-      [playNum].classList.toggle("item-active");
+      [playNum].classList.add("item-active");
   } else {
     timer = audio.currentTime;
     audio.pause();
     isPlay = false;
     PLAY_BTN.classList.remove("pause");
-    console.log("pause");
   }
 }
 
 export function createPlayList() {
+  audio.src = playList[playNum].src;
   for (let v of playList) {
     const li = document.createElement("li");
     li.classList.add("play-item");
     li.textContent = v.title;
     htmlPlayList.append(li);
   }
+  document.querySelectorAll(".play-item")[0].classList.add("item-active");
+
+  playerDuration.textContent = `0:00 / 0:39`;
 }
 
 export function playNext() {
@@ -112,22 +112,12 @@ export function getMuted() {
     lastVolume = volumeInput.value;
     volumeInput.value = 0;
     audio.volume = 0;
-    MUTE_BTN.style.opacity = "0.8";
+    MUTE_BTN.classList.toggle("hide-muteButton");
     isMuted = true;
   } else {
     volumeInput.value = lastVolume || 0.5;
     audio.volume = lastVolume || 0.5;
-    MUTE_BTN.style.opacity = "0.08";
+    MUTE_BTN.classList.toggle("hide-muteButton");
     isMuted = false;
   }
 }
-
-// MUTE_BTN.addEventListener("click", getMuted);
-// volumeInput.addEventListener("input", setVolume);
-// progressContainer.addEventListener("click", setProgress);
-// audio.addEventListener("timeupdate", updateProgress);
-// document.addEventListener("DOMContentLoaded", createPlayList);
-// PLAY_BTN.addEventListener("click", playAudio);
-// PLAY_NEXT_BTN.addEventListener("click", playNext);
-// PLAY_PREV_BTN.addEventListener("click", playPrev);
-// audio.addEventListener("ended", playNext);

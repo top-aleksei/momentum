@@ -32,7 +32,6 @@ export function showTime() {
 function showGreeting() {
   const localVocab = vocabulary[defaultLanguage];
   const timeOfDay = getTimeOfDay();
-  // console.log(vocabulary[defaultLanguage].partOfDay);
   const greetingText = `${localVocab.goodOfDay[timeOfDay]} ${localVocab.partOfDay[timeOfDay]},`;
   greetingDay.textContent = greetingText;
   if (!localStorage.name) {

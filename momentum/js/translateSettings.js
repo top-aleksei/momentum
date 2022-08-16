@@ -1,5 +1,6 @@
 import { vocabulary } from "./EnRu.js";
 import { defaultLanguage } from "./settings.js";
+import { unsplashTag, flickrTag } from "./settings.js";
 
 const settings = document.querySelector(".nav-title");
 const navItem = [...document.querySelectorAll(".nav-item")].slice(1);
@@ -34,4 +35,7 @@ export function translateMenu() {
   visabilityElements[3].textContent = vocabulary[defaultLanguage].dateWord;
   visabilityElements[4].textContent = vocabulary[defaultLanguage].greeting;
   visabilityElements[5].textContent = vocabulary[defaultLanguage].quotes;
+  // bg tegs
+  unsplashTag.placeholder = vocabulary[defaultLanguage].tag;
+  flickrTag.placeholder = vocabulary[defaultLanguage].tag;
 }

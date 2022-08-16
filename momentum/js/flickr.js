@@ -1,16 +1,5 @@
-// Key: e1308216bb31a5f90e5fe43b4cd51fdc;
-
-// Secret: d637815372e7eca5;
-
-// https://www.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=e1308216bb31a5f90e5fe43b4cd51fdc&gallery_id=72157720062587146&extras=url_h&format=json&nojsoncallback=1
-
-import { randomNum, setBg } from "./bg.js";
-import {
-  bgSource,
-  bgSwitchers,
-  changeBgSource,
-  flickrTag,
-} from "./settings.js";
+import { randomNum } from "./bg.js";
+import { flickrTag } from "./settings.js";
 import { vocabulary } from "./EnRu.js";
 import { getTimeOfDay } from "./getTimeOfDay.js";
 
@@ -49,15 +38,6 @@ export async function getFlickr() {
       return res;
     }
   }
-
-  //   if (response.status == 403) {
-  //     bgSwitchers[1].checked = false;
-  //     bgSwitchers[0].checked = true;
-  //     changeBgSource();
-  //     setBg();
-  //     console.log(bgSource);
-  //   }
-  //   const data = await response.json();
 }
 
 function getRandomNumFlickr(qty) {

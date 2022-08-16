@@ -8,7 +8,6 @@ export async function getQuotes() {
   const data = await res.json();
 
   let arr = data[defaultLanguage];
-  console.log(defaultLanguage);
   currenQuote = Math.floor(Math.random() * arr.length);
   let q = arr[currenQuote];
   quote.textContent = q.text;

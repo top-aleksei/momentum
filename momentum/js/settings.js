@@ -2,7 +2,6 @@ import { setBg } from "./bg.js";
 import { SETTINGS_BTN, settingsApp, EN_BTN, RU_BTN } from "./CONSTANTS.js";
 import { showTime } from "./data&time.js";
 import { vocabulary } from "./EnRu.js";
-import { getTimeOfDay } from "./getTimeOfDay.js";
 import { translateQuote } from "./quotes.js";
 import { translateMenu } from "./translateSettings.js";
 import { getWeather } from "./weather.js";
@@ -18,11 +17,9 @@ export let defaultLanguage;
 export let bgSource;
 // export let defaultLanguage = localStorage.lang || "en";
 // export let bgSource = localStorage.bgSource || "git";
-unsplashTag.placeholder = "#tag"; //placeholder
-flickrTag.placeholder = "#tag"; //placeholder
 
 export function showSettings() {
-  settingsApp.classList.toggle("hide-element");
+  settingsApp.classList.toggle("hide-with-opacity");
 }
 
 export function onEnglish() {
@@ -44,7 +41,6 @@ export function onRussian() {
   showTime();
   getWeather();
   translateMenu();
-  console.log(defaultLanguage);
 }
 
 export function hideSettings(e) {
@@ -52,7 +48,7 @@ export function hideSettings(e) {
     !e.composedPath().includes(settingsApp) &&
     !e.composedPath().includes(SETTINGS_BTN)
   ) {
-    settingsApp.classList.add("hide-element");
+    settingsApp.classList.add("hide-with-opacity");
   }
 }
 
@@ -91,6 +87,8 @@ export function getDefaultSettings() {
   flickrTag.value = localStorage.getItem("flickrTag");
   showRightSource();
   translateMenu();
+  unsplashTag.placeholder = vocabulary[defaultLanguage].tag;
+  flickrTag.placeholder = vocabulary[defaultLanguage].tag;
 }
 
 // BG-SOURCE

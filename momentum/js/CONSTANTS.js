@@ -47,3 +47,9 @@ export const weatherBTN = document.getElementById("hideWeather"),
   dateBTN = document.getElementById("hideDate"),
   greetingBTN = document.getElementById("hideGreeting"),
   quoteBTN = document.getElementById("hideQuotes");
+// TODOOOOOOOOOTODOOOOOOOOOOTODOOOOOOOOOOOOOO
+export const showTodoBTN = document.querySelector(".app-dash"),
+  todoApp = document.querySelector(".app"),
+  todoInput = document.querySelector(".todo-input"),
+  emptyTodo = document.querySelector(".empty"),
+  todoList = document.querySelector(".todo-list");

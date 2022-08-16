@@ -14,6 +14,8 @@ import {
   PLAY_BTN,
   PLAY_NEXT_BTN,
   PLAY_PREV_BTN,
+  showTodoBTN,
+  todoInput,
 } from "./CONSTANTS.js";
 import { setLocalStorage, getLocalStorage } from "./localStorage.js";
 import { getRandomNum, setBg, getSlideNext, getSlidePrev } from "./bg.js";
@@ -45,8 +47,18 @@ import {
 } from "./settings.js";
 import "./settingsMenu.js";
 import "./showHIDEelements.js";
+import {
+  showTodoApp,
+  createNewTodo,
+  hideTodoApp,
+  setTodosLocalStore,
+  getTodosLocalStore,
+  checkTodosQty,
+} from "./todo.js";
+
 getDefaultSettings();
-//LOCAL STORAGE
+
+//LOCAL STORAGE (name)
 window.addEventListener("beforeunload", setLocalStorage);
 window.addEventListener("load", getLocalStorage);
 
@@ -91,3 +103,11 @@ body.addEventListener("click", hideSettings);
 window.addEventListener("beforeunload", setDefaultSettings);
 window.addEventListener("load", getDefaultSettings);
 window.addEventListener("load", showRightChoosenLang);
+
+//TODO
+showTodoBTN.addEventListener("click", showTodoApp);
+todoInput.addEventListener("change", createNewTodo);
+body.addEventListener("click", hideTodoApp);
+window.addEventListener("beforeunload", setTodosLocalStore);
+window.addEventListener("load", getTodosLocalStore);
+window.addEventListener("load", checkTodosQty);

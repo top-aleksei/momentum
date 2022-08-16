@@ -30,6 +30,7 @@ export const vocabulary = {
     dateWord: "Date",
     greeting: "Greeting",
     quotes: "Quotes",
+    tag: "tag",
   },
   ru: {
     partOfDay: ["ночи", "утро", "день", "вечер"],
@@ -62,5 +63,6 @@ export const vocabulary = {
     dateWord: "Дата",
     greeting: "Приветствие",
     quotes: "Цитаты",
+    tag: "тег",
   },
 };
